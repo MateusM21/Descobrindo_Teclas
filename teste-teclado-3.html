@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+   <title>Um heroi que atira</title>
+   <script src="teclado.js"></script>
+   <script src="heroi.js"></script>
+   <script src="bola.js"></script>
+   <script src="animacao.js"></script>
+</head>
+
+<body>
+   <canvas id="canvas_teclado_3" width="1000" height="1000"></canvas>
+   <script>
+      var canvas = document.getElementById('canvas_teclado_3');
+      var context = canvas.getContext('2d');
+
+      var teclado = new Teclado(document);
+      var animacao = new Animacao(context);
+
+      
+      var heroi = new Heroi(context, teclado, animacao);
+      heroi.x = 0;
+      heroi.y = 100;
+      heroi.velocidade = 5;
+      animacao.novoSprite(heroi);
+
+      teclado.disparou(ESPACO, function() {
+         heroi.atirar();
+      });
+
+      animacao.ligar();
+   </script>
+</body>
+
+</html>
